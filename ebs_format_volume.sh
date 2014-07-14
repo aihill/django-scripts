@@ -15,19 +15,23 @@ fi
 
 set -x -e
 
-# check device
+echo "$0: check device..."
 file -s "$1"
 
-# create filesystem
+echo "$0: create filesystem..."
 mkfs -t ext4 "$1"
 
-# create mount point
 if [[ ! -d "$2" ]]; then
+	echo "$0: create mount point: $2"
 	mkdir -p "$2"
+else
+	echo "$0: already created: $2"
 fi
 
-# create fstab entry
+echo "$0: update fstab..."
 echo "$1    $2   ext4    defaults,nofail,nobootwait   0   2" >> /etc/fstab
 
-# mount!
+echo "$0: mount..."
 mount -a
+
+echo "$0: done."
