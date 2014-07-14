@@ -1,0 +1,5 @@
+# security exceptions (necessary for PIP 1.5)
+--allow-all-external
+
+# scientific computing
+scikit-image>=0.10.1,<0.11
