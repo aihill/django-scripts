@@ -5,10 +5,10 @@
 
 if [[ $# -lt 2 ]] || [[ $EUID -ne 0 ]]; then
   echo "Usage: sudo $0 /dev/[disk name] /mount-point"
-  exit 1;
+  exit 1
 fi
 
-if [[ $(grep -c "/etc/fstab" "$1") -gt 0 ]]; then
+if [[ $(grep -c "$1" "/etc/fstab") -gt 0 ]]; then
 	echo "Error: drive already listed in /etc/fstab"
 	exit 1
 fi
