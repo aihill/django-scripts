@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# This starts gunicorn (the worker framework that runs django code).
+u This starts gunicorn (the worker framework that runs django code).
 # Incoming web requests go to nginx, which are then fowarded to gunicorn.
 #
 # NOTE: while you can start this script, by default it is set up to be called
@@ -13,7 +13,7 @@ DIR="$( builtin cd "$( dirname "$( readlink -f "${BASH_SOURCE[0]}" )" )" && pwd 
 source $DIR/load_config.sh
 
 NAME="$PROJECT_NAME"                              # Name of the application
-SOCKFILE=$REPO_DIR/run/gunicorn.sock              # we will communicte using this unix socket
+SOCKFILE=$RUN_DIR/gunicorn.sock                   # we will communicte using this unix socket
 NUM_WORKERS=4                                     # how many worker processes should Gunicorn spawn
 DJANGO_SETTINGS_MODULE=config.settings            # which settings file should Django use
 DJANGO_WSGI=config.wsgi                           # which settings file should Django use

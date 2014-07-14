@@ -39,4 +39,4 @@ else
 	echo "gunicorn already disabled"
 fi
 
-sudo rm -f $REPO_DIR/run/gunicorn.sock
+sudo rm -f $RUN_DIR/gunicorn.sock

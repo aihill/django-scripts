@@ -53,13 +53,23 @@ if [[ -z "$REPO_DIR" ]]; then
 	exit 1
 fi
 
-if [[ -z "$BACKUP_DIR" ]] || [[ -z "$DATA_DIR" ]] || [[ -z "$SRC_DIR" ]] || [[ -z "$SRC_CONFIG_DIR" ]] || [[ -z "$VENV_DIR" ]]; then
+if \
+	[[ -z "$BACKUP_DIR" ]] || \
+	[[ -z "$DATA_DIR" ]] || \
+	[[ -z "$RUN_DIR" ]] || \
+	[[ -z "$SRC_CONFIG_DIR" ]] || [[ ! -d "$SRC_CONFIG_DIR" ]] || \
+	[[ -z "$SRC_DIR" ]] || [[ ! -d "$SRC_DIR" ]] || \
+	[[ -z "$VENV_DIR" ]] || \
+	[[ -z "$WEB_SCRIPTS_DIR" ]]
+then
 	echo "Please configure directories in $DIR/config.sh"
 	echo "    BACKUP_DIR=$BACKUP_DIR"
 	echo "    DATA_DIR=$DATA_DIR"
-	echo "    VENV_DIR=$VENV_DIR"
-	echo "    SRC_DIR=$SRC_DIR"
+	echo "    RUN_DIR=$RUN_DIR"
 	echo "    SRC_CONFIG_DIR=$SRC_CONFIG_DIR"
+	echo "    SRC_DIR=$SRC_DIR"
+	echo "    VENV_DIR=$VENV_DIR"
+	echo "    WEB_SCRIPTS_DIR=$WEB_SCRIPTS_DIR"
 	exit 1
 fi
 

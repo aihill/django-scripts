@@ -5,7 +5,7 @@
 #
 
 DIR="$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-source $DIR/load_config.sh
+source $DIR/load_config.uh
 
 # pass the username as the first argument (useful if using sudo)
 LOCAL_USER=$USER
@@ -18,7 +18,7 @@ fi
 sudo chown -R $LOCAL_USER:$SERVER_GROUP $REPO_DIR/server
 
 # Run: only server has ownership
-sudo chown -R $SERVER_USER:$SERVER_GROUP $REPO_DIR/run
+sudo chown -R $SERVER_USER:$SERVER_GROUP $RUN_DIR
 
 # Data directories: owned by webserver, but editable by user.
 # (since the webserver will be writing new files here).

@@ -55,7 +55,7 @@ if [[ $response =~ ^(y)$ ]]; then
 	echo ""
 	echo "Note: Ubuntu packages installed for this project were not removed"
 	echo "You can see what was installed in:"
-	echo "    $REPO_DIR/scripts/install/requirements-ubuntu.txt"
+	echo "    $DIR/install/requirements-ubuntu.txt"
 	echo ""
 	echo "The following directories were also not deleted:"
 	echo "(just in case you want the data)"

@@ -15,13 +15,13 @@ source "$DIR/load_config.sh"
 bash "$DIR/django_collect_static.sh"
 
 ##
-# run/ directory
+# $RUN_DIR directory
 
-echo "Preparing run/ directory..."
-sudo mkdir -p $REPO_DIR/run
-sudo chown -R $SERVER_USER:$SERVER_GROUP $REPO_DIR/run
+echo "Preparing $RUN_DIR directory..."
+sudo mkdir -p $RUN_DIR
+sudo chown -R $SERVER_USER:$SERVER_GROUP $RUN_DIR
 for f in gunicorn nginx-access nginx-error; do
-	sudo -u $SERVER_USER touch $REPO_DIR/run/$f.log
+	sudo -u $SERVER_USER touch $RUN_DIR/$f.log
 done
 
 ##
@@ -33,6 +33,7 @@ if [[ ! -f /etc/supervisor/conf.d/$PROJECT_NAME.conf ]]; then
 	# fill in the config file
 	sed -e "s|REPO_DIR|$REPO_DIR|g" \
 		-e "s|SRC_DIR|$SRC_DIR|g" \
+		-e "s|RUN_DIR|$RUN_DIR|g" \
 		-e "s|SERVER_USER|$SERVER_USER|g" \
 		-e "s|SERVER_GROUP|$SERVER_GROUP|g" \
 		-e "s|PROJECT_NAME|$PROJECT_NAME|g" \
@@ -56,6 +57,7 @@ if [[ ! -f /etc/logrotate.d/nginx-$PROJECT_NAME ]]; then
 	echo "Setting up logrotate..."
 
 	sed -e "s|REPO_DIR|$REPO_DIR|g" \
+		-e "s|RUN_DIR|$RUN_DIR|g" \
 		-e "s|SERVER_USER|$SERVER_USER|g" \
 		-e "s|SERVER_GROUP|$SERVER_GROUP|g" \
 		$LOGROTATE_TEMPLATE \
@@ -73,8 +75,10 @@ if [[ ! -f /etc/nginx/sites-available/$PROJECT_NAME ]]; then
 
 	# fill in the template config file
 	sed -e "s|PROJECT_NAME|$PROJECT_NAME|g" \
+		-e "s|RUN_DIR|$RUN_DIR|g" \
 		-e "s|REPO_DIR|$REPO_DIR|g" \
 		-e "s|SRC_DIR|$SRC_DIR|g" \
+		-e "s|DOCS_DIR|$DOCS_DIR|g" \
 		-e "s|DATA_DIR|$DATA_DIR|g" \
 		-e "s|ADMIN_EMAIL|$ADMIN_EMAIL|g" \
 		-e "s|SERVER_NAME|$SERVER_NAME|g" \

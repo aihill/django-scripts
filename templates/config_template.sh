@@ -52,15 +52,18 @@ ADMIN_EMAIL=admin@example.com
 #     http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 TIME_ZONE=America/New_York
 
+# Location of web-scripts (automatically found based on location of config.sh)
+WEB_SCRIPTS_DIR="$(readlink -f "$( builtin cd "$( dirname "$( readlink -f "${BASH_SOURCE[0]}" )" )" && pwd )")"
+
 # Root directory of this repository.  This assumes that the scripts folder is
 # one level deep in the repository.
-REPO_DIR="$(readlink -f "$( builtin cd "$( dirname "$( readlink -f "${BASH_SOURCE[0]}" )" )/.." && pwd )")"
+REPO_DIR="$(readlink -f "$( builtin cd "$WEB_SCRIPTS_DIR/.." && pwd )")"
 
 # Django source files.
 SRC_DIR=$REPO_DIR/server
 
 # Django directory containing settings.py
-SRC_CONFIG_DIR=$REPO_DIR/server/config
+SRC_CONFIG_DIR=$REPO_DIR/server/$PROJECT_NAME
 
 # Virtualenv directory.
 VENV_DIR=$REPO_DIR/venv
@@ -71,15 +74,14 @@ VENV_DIR=$REPO_DIR/venv
 DATA_DIR=$REPO_DIR/data
 
 # Location where backups of the database are stored (does not have to be inside
-# the repository).  This directory is touched by scripts/dump_database.sh and
-# scripts/restore_database.sh.
+# the repository).
 BACKUP_DIR=$REPO_DIR/backup
 
 # Location where Sphinx docs are stored (if any)
 DOCS_DIR=$REPO_DIR/docs
 
-# Location containing templates for install
-TEMPLATES_DIR=$REPO_DIR/scripts/templates
+# Directory holding run files (server logs, etc)
+RUN_DIR=$REPO_DIR/run
 
 # This file contains the most recent backup, and is is the version restored by
 # ./restore_database.sh.
@@ -116,7 +118,8 @@ REPO_BARE_DIR=
 
 ######
 
-# specific template names
+# Locations of templates to be filled in by install scripts
+TEMPLATES_DIR=$WEB_SCRIPTS_DIR/templates
 NGINX_TEMPLATE=$TEMPLATES_DIR/nginx_template.conf
 DJANGO_SETTINGS_LOCAL_TEMPLATE=$TEMPLATES_DIR/django_settings_local_template.py
 SUPERVISOR_TEMPLATE=$TEMPLATES_DIR/supervisor_template.conf
