@@ -21,9 +21,9 @@ assert_no_space "$DIR" "Please move the repository to a path without spaces"
 
 if [[ ! -s $DIR/config.sh ]]; then
 	echo "$0: Configuration not yet set up ($DIR/config.sh)."
-	echo "$0: Running $DIR/create_config.py"
+	echo "$0: Running $DIR/config_create.py"
 	echo ""
-	$DIR/create_config.py
+	$DIR/config_create.py
 	if [[ ! -s $DIR/config.sh ]]; then
 		print "Error: configuration file ($DIR/config.sh) was not created"
 		return
