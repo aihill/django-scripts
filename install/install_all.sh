@@ -39,7 +39,7 @@ sudo make clean
 source "$DIR/docs_build.sh"
 
 # visit main pages for a faster first load
-bash "$DIR/warm_cache.sh"
+bash "$DIR/memcached_warm_cache.sh"
 
 set +e
 set +x
