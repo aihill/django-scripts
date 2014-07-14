@@ -13,6 +13,8 @@ if [[ $(grep -c "/etc/fstab" "$1") -gt 0 ]]; then
 	exit 1
 fi
 
+set -x -e
+
 # check device
 file -s "$1"
 
