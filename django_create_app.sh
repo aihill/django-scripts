@@ -46,4 +46,4 @@ fi
 echo ""
 echo "$1: created!"
 echo ""
-echo "Make sure to add '$1' to INSTALLED_APPS in server/config/settings.py"
+echo "Make sure to add '$1' to INSTALLED_APPS in $SRC_SETTINGS_DIR/settings.py"

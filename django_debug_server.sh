@@ -18,9 +18,9 @@ fi
 bash "$DIR/nginx_make_private.sh"
 
 # set DEBUG=True
-F="$SRC_DIR/config/settings_local.py"
+F="$SRC_SETTINGS_DIR/settings_local.py"
 sed -r -i -e 's/^\s*DEBUG\s*=.*$/DEBUG = True/' "$F"
-echo "setting DEBUG=True in $SRC_DIR/config/settings_local.py"
+echo "setting DEBUG=True in $SRC_SETTINGS_DIR/settings_local.py"
 
 # start the private webserver
 bash "$DIR/django_collect_static.sh"

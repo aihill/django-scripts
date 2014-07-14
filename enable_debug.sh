@@ -9,7 +9,7 @@
 DIR="$( builtin cd "$( dirname "$( readlink -f "${BASH_SOURCE[0]}" )" )" && pwd )"
 source "$DIR/load_config.sh"
 
-F="$SRC_DIR/config/settings_local.py"
+F="$SRC_SETTINGS_DIR/settings_local.py"
 
 sed -r -i \
 	-e 's/^\s*DEBUG\s*=.*$/DEBUG = True/' \

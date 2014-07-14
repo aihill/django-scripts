@@ -18,14 +18,14 @@ source "$DIR/load_config.sh"
 
 echo ""
 echo "$0: mark site as changed"
-sudo touch "$SRC_DIR/config/wsgi.py"
+sudo touch "$SRC_SETTINGS_DIR/wsgi.py"
 
 echo ""
 echo "$0: update static files"
 bash "$DIR/django_collect_static.sh"
 
 # only necessary when offline compression is enabled
-if grep -E '^\s*COMPRESS_OFFLINE\s*=\s*True' "$SRC_DIR/config/settings_local.py"; then
+if grep -E '^\s*COMPRESS_OFFLINE\s*=\s*True' "$SRC_SETTINGS_DIR/settings_local.py"; then
 	echo ""
 	echo "$0: update compressor offline files"
 	sudo -u $SERVER_USER bash -c "builtin cd $SRC_DIR; ./manage.py compress"

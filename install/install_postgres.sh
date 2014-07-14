@@ -2,7 +2,7 @@
 #
 # This script configures PostgreSQL, generates passwords,
 # and stores the generated database info into
-# $REPO_DIR/server/config/settings.py
+# $SRC_SETTINGS_DIR/settings.py
 
 ## Load configuration
 

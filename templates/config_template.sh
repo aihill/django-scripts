@@ -2,7 +2,7 @@
 ## Project Configuration
 ##
 ## Note: once installed, if you want to make any changes, you will need
-## to edit both this file and server/config/settings_local.py.
+## to edit both this file and $SERVER_SETTINGS_DIR/settings_local.py.
 ##
 
 if [[ -z "$BASH" ]]; then
@@ -24,12 +24,12 @@ PROJECT_NAME=
 #    Correct: localhost or example.com or subdomain.example.com
 #    Incorrect: www.example.com or http://www.example.com
 # Note: after installation, you need to also edit:
-#     server/config/settings_local.py
+#     $SERVER_SETTINGS_DIR/settings_local.py
 SERVER_NAME=localhost
 
 # Server IP address.  Leave as 127.0.0.1 if you are only running locally.
 # Note: after installation, you need to also edit:
-#     server/config/settings_local.py
+#     $SERVER_SETTINGS_DIR/settings_local.py
 SERVER_IP=127.0.0.1
 
 # User/group for running the webserver.  The default of 'www-data' should be
@@ -41,13 +41,13 @@ SERVER_GROUP=www-data
 # Your name and email -- you will get emailed with a stack trace on server
 # failure, so it's a good idea to fill this in properly.
 # Note: after installation, you need to also edit:
-#     server/config/settings_local.py
+#     $SERVER_SETTINGS_DIR/settings_local.py
 ADMIN_NAME="Admin Name"
 ADMIN_EMAIL=admin@example.com
 
 # Local time zone (important to get times correct)
 # Note: after installation, you need to also edit:
-#     server/config/settings_local.py
+#     $SERVER_SETTINGS_DIR/settings_local.py
 # List of possible time zones:
 #     http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 TIME_ZONE=America/New_York
@@ -63,7 +63,7 @@ REPO_DIR="$(readlink -f "$( builtin cd "$WEB_SCRIPTS_DIR/.." && pwd )")"
 SRC_DIR=$REPO_DIR/server
 
 # Django directory containing settings.py
-SRC_CONFIG_DIR=$REPO_DIR/server/$PROJECT_NAME
+SRC_SETTINGS_DIR=$REPO_DIR/server/$PROJECT_NAME
 
 # Virtualenv directory.
 VENV_DIR=$REPO_DIR/venv
