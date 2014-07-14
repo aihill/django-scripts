@@ -7,7 +7,7 @@
 #
 
 if [ -z "$1" ]; then
-  echo "Usage: sudo $0 /dev/sdh1"
+  echo "Usage: sudo $0 /dev/[disk name]"
   exit 1;
 fi
 
