@@ -24,6 +24,7 @@ requests>=2.3.0,<2.4
 django>=1.6.5,<1.7
 south>=0.8.4,<2.0
 gunicorn>=18.0,<19
+django-storages>=1.1.8,<1.2
 
 # memcached
 pylibmc>=1.2.3,<1.3
