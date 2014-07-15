@@ -23,12 +23,12 @@ USER_PSQL_PASS=$(< /dev/urandom tr -dc A-Z-a-z-0-9 | head -c16)
 SECRET_KEY=$(< /dev/urandom tr -dc A-Z-a-z-0-9 | head -c64)
 
 # increase OS shared memory
-sudo sed -e "/^# Patched by web-scripts installer:/d" \
+sudo sed -e "/^# Patched by django-scripts installer:/d" \
 		 -e "/^kernel.shmall/d" \
          -e "/^kernel.shmmax/d" \
 		 /etc/sysctl.conf > tmp.conf
 sudo mv tmp.conf /etc/sysctl.conf
-echo "# Patched by web-scripts installer:" >> /etc/sysctl.conf
+echo "# Patched by django-scripts installer:" >> /etc/sysctl.conf
 echo "kernel.shmall = $KERNEL_SHMALL" >> /etc/sysctl.conf
 echo "kernel.shmmax = $KERNEL_SHMMAX" >> /etc/sysctl.conf
 

@@ -52,12 +52,12 @@ ADMIN_EMAIL=admin@example.com
 #     http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 TIME_ZONE=America/New_York
 
-# Location of web-scripts (automatically found based on location of config.sh)
-WEB_SCRIPTS_DIR="$(readlink -f "$( builtin cd "$( dirname "$( readlink -f "${BASH_SOURCE[0]}" )" )" && pwd )")"
+# Location of django-scripts (automatically found based on location of config.sh)
+SCRIPTS_DIR="$(readlink -f "$( builtin cd "$( dirname "$( readlink -f "${BASH_SOURCE[0]}" )" )" && pwd )")"
 
 # Root directory of this repository.  This assumes that the scripts folder is
 # one level deep in the repository.
-REPO_DIR="$(readlink -f "$( builtin cd "$WEB_SCRIPTS_DIR/.." && pwd )")"
+REPO_DIR="$(readlink -f "$( builtin cd "$SCRIPTS_DIR/.." && pwd )")"
 
 # Django source files.
 SRC_DIR=$REPO_DIR/server
@@ -119,7 +119,7 @@ REPO_BARE_DIR=
 ######
 
 # Locations of templates to be filled in by install scripts
-TEMPLATES_DIR=$WEB_SCRIPTS_DIR/templates
+TEMPLATES_DIR=$SCRIPTS_DIR/templates
 NGINX_TEMPLATE=$TEMPLATES_DIR/nginx_template.conf
 DJANGO_SETTINGS_LOCAL_TEMPLATE=$TEMPLATES_DIR/django_settings_local_template.py
 SUPERVISOR_TEMPLATE=$TEMPLATES_DIR/supervisor_template.conf
