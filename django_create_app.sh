@@ -14,7 +14,7 @@ fi
 
 builtin cd $SRC_DIR
 if [ ! -d $1 ]; then
-	./manage.py startapp $1
+	$VENV_DIR/bin/python manage.py startapp $1
 else
 	echo "App $1 already exists"
 fi

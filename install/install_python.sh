@@ -50,3 +50,9 @@ echo "Installing python packages (locally) in a particular order..."
 for f in $(ls -1 $DIR/install/requirements-python-*.txt | sort); do
 	pip install $PIP_OPTS -r $f
 done
+
+echo "Patch manage.py to use virtualenv"
+tail -n +2 $SRC_DIR/manage.py > $SRC_DIR/manage.py.tmp
+echo '#!../venv/bin/python' > $SRC_DIR/manage.py
+cat $SRC_DIR/manage.py.tmp >> $SRC_DIR/manage.py
+rm $SRC_DIR/manage.py.tmp
