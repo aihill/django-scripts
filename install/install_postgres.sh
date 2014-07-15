@@ -189,7 +189,7 @@ sed -e "s|'ADMIN_NAME'|'$ADMIN_NAME'|g" \
 	-e "s|'TIME_ZONE'|'$TIME_ZONE'|g" \
 	-e "s|'SECRET_KEY'|'$SECRET_KEY'|g" \
 	$DJANGO_SETTINGS_LOCAL_TEMPLATE > \
-	$CONFIG_DIR/settings_local.py
+	$SRC_SETTINGS_DIR/settings_local.py
 
 
 # (this has to be after settings_local.py is set up)
