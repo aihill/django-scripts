@@ -35,7 +35,7 @@ else
 fi
 
 # fix node executable name
-if [[ -f /usr/bin/node ]] && [[ -f /usr/bin/nodejs ]]; then
+if [[ ! -f /usr/bin/node ]] && [[ -f /usr/bin/nodejs ]]; then
 	sudo ln -s /usr/bin/nodejs /usr/bin/node
 fi
 
