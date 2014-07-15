@@ -21,7 +21,7 @@ sudo rm -f /usr/bin/lessc /usr/local/bin/lessc
 
 echo "Install node 0.10"
 if [[ ${VERSION%%.*} -ge 13 ]]; then
-	# Ubuntu 14.04
+	# Ubuntu 13, 14.04
 	sudo add-apt-repository -y ppa:chris-lea/node.js
 	sudo apt-get update -y
 	sudo apt-get install -y nodejs
