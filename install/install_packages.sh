@@ -26,10 +26,11 @@ sudo apt-get install -y \
 sudo apt-get build-dep -y python-numpy python-scipy
 
 # make sure the image libraries are in /usr/lib
-[[ -f /usr/lib/libfreetype.so ]] || sudo ln -s /usr/lib/`uname -i`-linux-gnu/libfreetype.so /usr/lib/
-[[ -f /usr/lib/libjpeg.so ]] || sudo ln -s /usr/lib/`uname -i`-linux-gnu/libjpeg.so /usr/lib/
-[[ -f /usr/lib/libz.so ]] || sudo ln -s /usr/lib/`uname -i`-linux-gnu/libz.so /usr/lib/
-[[ -f /usr/lib/liblcms.so ]] || sudo ln -s /usr/lib/`uname -i`-linux-gnu/liblcms.so /usr/lib/
+for f in libfreetype.so libjpeg.so libz.so liblcms.so; do
+	if [[ ! -f /usr/lib/$f ]]; then
+		sudo ln -s /usr/lib/`uname -i`-linux-gnu/$f /usr/lib/$f
+	fi
+done
 
 #########################
 
