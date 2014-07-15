@@ -12,8 +12,7 @@ fi
 
 # make sure sudo works
 echo "Log in to access root:"
-# increase sudo timeout
-sudo -v
+sudo echo "root"
 
 # make sure we're on Ubuntu
 if command -v apt-get >/dev/null 2>&1 && [[ $(uname -a | grep -c "Ubuntu") -ge 1 ]]; then
