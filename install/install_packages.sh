@@ -42,8 +42,14 @@ sudo rm -f /usr/bin/coffee /usr/local/bin/coffee
 sudo rm -f /usr/bin/lessc /usr/local/bin/lessc
 
 echo "Install newest node"
-#sudo add-apt-repository ppa:chris-lea/node.js
-sudo add-apt-repository -y ppa:richarvey/nodejs
+if [[ ${VERSION%%.*} -ge 14 ]]; then
+	# Ubuntu 14.04
+	sudo add-apt-repository -y ppa:chris-lea/node.js
+else
+	# Ubuntu 12.04
+	sudo add-apt-repository -y ppa:richarvey/nodejs
+fi
+
 sudo apt-get update -y
 sudo apt-get install -y nodejs npm
 echo "Node version:"
