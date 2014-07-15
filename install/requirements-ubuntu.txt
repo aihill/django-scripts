@@ -22,13 +22,12 @@ libjpeg-dev
 libmemcached-dev
 libmpfr-dev
 libpng-dev
+libssl-dev
 libxml2-dev
 libxslt-dev
 logrotate
 memcached
 nginx
-nodejs
-npm
 ntp
 openssl
 premake
