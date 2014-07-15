@@ -5,7 +5,7 @@
 #
 
 DIR="$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-source $DIR/load_config.uh
+source $DIR/load_config.sh
 
 # pass the username as the first argument (useful if using sudo)
 LOCAL_USER=$USER
