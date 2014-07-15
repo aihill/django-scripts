@@ -17,10 +17,10 @@ source "$DIR/install/check_setup.sh"
 set -x
 
 # install each component
+source "$DIR/install/install_dirs.sh"
 source "$DIR/install/install_packages.sh"
 source "$DIR/install/install_node.sh"
 source "$DIR/install/install_python.sh"
-source "$DIR/install/install_dirs.sh"
 source "$DIR/install/install_postgres.sh"
 source "$DIR/install/install_memcached.sh"
 source "$DIR/install/install_nginx.sh"
