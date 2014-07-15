@@ -41,14 +41,16 @@ wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py -O get-pip.py
 python get-pip.py
 cd "$REPO_DIR"
 
+LOCAL_PIP="$VENV_DIR/bin/pip"
+
 echo "Installing setup packages (locally)..."
-pip install --upgrade setuptools
-pip install --upgrade distribute
-pip install --upgrade versiontools
+$LOCAL_PIP install --upgrade setuptools
+$LOCAL_PIP install --upgrade distribute
+$LOCAL_PIP install --upgrade versiontools
 
 echo "Installing python packages (locally) in a particular order..."
 for f in $(ls -1 $DIR/install/requirements-python-*.txt | sort); do
-	pip install $PIP_OPTS -r $f
+	$LOCAL_PIP install $PIP_OPTS -r $f
 done
 
 echo "Patch manage.py to use virtualenv"
