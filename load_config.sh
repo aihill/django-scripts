@@ -154,6 +154,12 @@ if [[ -z "$DB_CLUSTER" ]] || [[ -z "$DB_NAME" ]] || [[ -z "$DB_USER" ]]; then
 	exit 1
 fi
 
+if [[ -z "$TIME_ZONE" ]]; then
+	echo "Please specify the time zone in $DIR/config.sh"
+	echo "    TIME_ZONE=$TIME_ZONE"
+	exit 1
+fi
+
 if [[ -z "$MEMCACHED_PORT" ]] || [[ -z "$MEMCACHED_HOST" ]]; then
 	echo "Please configure memcached in $DIR/config.sh"
 	echo "    MEMCACHED_PORT=$MEMCACHED_PORT"

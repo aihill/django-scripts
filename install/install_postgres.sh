@@ -170,7 +170,7 @@ fi
 
 echo "Filling in Django settings..."
 
-if [[ -n "$TIME_ZONE" ]]; then
+if [[ -z "$TIME_ZONE" ]]; then
 	TIME_ZONE=$(cat /etc/timezone)
 fi
 
