@@ -29,10 +29,12 @@ function update() {
 	sudo -u $LOCAL_USER git pull
 
 	# clean docs
-	p="$(pwd)"
-	builtin cd "$REPO_DIR/docs"
-	sudo make clean
-	cd "$p"
+	if [[ -n "$DOCS_DIR" ]] && [[ -d "$DOCS_DIR" ]]; then
+		p="$(pwd)"
+		builtin cd "$DOCS_DIR"
+		sudo make clean
+		cd "$p"
+	fi
 
 	# mark site as changed
 	$DIR/files_changed.sh $LOCAL_USER

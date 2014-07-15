@@ -34,10 +34,13 @@ set +e
 ./manage.py createsuperuser
 set -e
 
-# build sphinx documentation in docs/
-builtin cd "$REPO_DIR/docs"
-sudo make clean
-source "$DIR/docs_build.sh"
+# build sphinx documentation
+if [[ -n "$DOCS_DIR" ]] && [[ -d "$DOCS_DIR" ]]; then
+	echo "build documentation"
+	builtin cd "$DOCS_DIR"
+	sudo make clean
+	source "$DIR/docs_build.sh"
+fi
 
 # visit main pages for a faster first load
 bash "$DIR/memcached_warm_cache.sh"
