@@ -52,7 +52,7 @@ for f in $(ls -1 $DIR/install/requirements-python-*.txt | sort); do
 done
 
 echo "Patch manage.py to use virtualenv"
-tail -n +2 $SRC_DIR/manage.py > $SRC_DIR/manage.py.tmp
+sed '1d' $SRC_DIR/manage.py > $SRC_DIR/manage.py.tmp
 echo '#!../venv/bin/python' > $SRC_DIR/manage.py
 cat $SRC_DIR/manage.py.tmp >> $SRC_DIR/manage.py
 rm $SRC_DIR/manage.py.tmp
