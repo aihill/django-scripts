@@ -19,7 +19,7 @@ sudo apt-get remove -y --purge nodejs npm
 sudo rm -f /usr/bin/coffee /usr/local/bin/coffee
 sudo rm -f /usr/bin/lessc /usr/local/bin/lessc
 
-echo "Install newest node"
+echo "Install node 0.10"
 if [[ ${VERSION%%.*} -ge 14 ]]; then
 	# Ubuntu 14.04
 	sudo add-apt-repository -y ppa:chris-lea/node.js
@@ -34,8 +34,10 @@ else
 	npm config set registry http://registry.npmjs.org/
 fi
 
-echo "Node version:"
-node -v
+# fix node executable name
+if [[ -f /usr/bin/node ]] && [[ -f /usr/bin/nodejs ]]; then
+	sudo ln -s /usr/bin/nodejs /usr/bin/node
+fi
 
 echo "Install coffeescript"
 sudo npm install -g coffee-script
