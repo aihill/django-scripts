@@ -60,6 +60,7 @@ if \
 	[[ -z "$SRC_SETTINGS_DIR" ]] || [[ ! -s "$SRC_SETTINGS_DIR/settings.py" ]] || \
 	[[ -z "$SRC_DIR" ]] || [[ ! -d "$SRC_DIR" ]] || \
 	[[ -z "$VENV_DIR" ]] || \
+	[[ -z "$OPT_DIR" ]] || \
 	[[ -z "$SCRIPTS_DIR" ]]
 then
 	echo "Please configure directories in $DIR/config.sh"
@@ -69,6 +70,7 @@ then
 	echo "    SRC_SETTINGS_DIR=$SRC_SETTINGS_DIR"
 	echo "    SRC_DIR=$SRC_DIR"
 	echo "    VENV_DIR=$VENV_DIR"
+	echo "    OPT_DIR=$OPT_DIR"
 	echo "    SCRIPTS_DIR=$SCRIPTS_DIR"
 	exit 1
 fi

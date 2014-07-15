@@ -68,6 +68,9 @@ SRC_SETTINGS_DIR=$REPO_DIR/server/$PROJECT_NAME
 # Virtualenv directory.
 VENV_DIR=$REPO_DIR/venv
 
+# External library directory.
+OPT_DIR=$REPO_DIR/opt
+
 # Location where local data is stored: (does not have to be inside the repository)
 #   $DATA_DIR/static: static assets such as js, css, and copies of the paper.
 #   $DATA_DIR/media: any locally saved images (currently everything is on S3)

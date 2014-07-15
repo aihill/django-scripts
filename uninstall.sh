@@ -44,7 +44,7 @@ if [[ $response =~ ^(y)$ ]]; then
 
 	echo "Delete opt and virtualenv..."
 	sudo rm -rf \
-		$REPO_DIR/opt \
+		$OPT_DIR \
 		$VENV_DIR
 
 	echo "Drop postgres database cluster..."
