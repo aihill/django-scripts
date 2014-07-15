@@ -194,7 +194,7 @@ sed -e "s|'ADMIN_NAME'|'$ADMIN_NAME'|g" \
 
 # (this has to be after settings_local.py is set up)
 echo "Running migrations..."
-bash "$DIR/migrate_database.sh"
+bash "$DIR/database_migrate.sh"
 
 echo "Setting up database cache..."
 set +e
