@@ -82,12 +82,12 @@ echo "# config for $PROJECT_NAME:" >> tmp.conf
 echo "client_encoding = 'UTF8'" >> tmp.conf
 echo "default_transaction_isolation = 'read committed'" >> tmp.conf
 echo "timezone = 'UTC'" >> tmp.conf
-sudo mv -f tmp.conf $POSTGRESQL_CONF
+sudo mv -f tmp.conf "$POSTGRESQL_CONF"
 
 # increase memory from the small default of 24MB
 sudo sed -r "s/^shared_buffers\s+=.*/shared_buffers = $PSQL_SHARED_BUFFERS/" $POSTGRESQL_CONF > tmp.conf
-sudo mv -f tmp.conf $POSTGRESQL_CONF
-sudo grep shared_buffers $POSTGRESQL_CONF
+sudo mv -f tmp.conf "$POSTGRESQL_CONF"
+sudo grep shared_buffers "$POSTGRESQL_CONF"
 
 # restart postgres with updated shared_buffers
 if sudo service postgresql restart; then
