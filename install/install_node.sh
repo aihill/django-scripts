@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Install Ubuntu packages used by the server
+# Install Nodejs packages used by the server
 #
 
 # find the scripts directory (note the /..)
@@ -13,27 +13,31 @@ cd "$REPO_DIR"
 
 echo "Installing node.js..."
 
+# fix npm registry
 echo "Uninstall old node"
-sudo apt-get remove -y nodejs npm
+sudo apt-get remove -y --purge nodejs npm
 sudo rm -f /usr/bin/coffee /usr/local/bin/coffee
 sudo rm -f /usr/bin/lessc /usr/local/bin/lessc
 
-echo "Install node 0.10"
-git clone https://github.com/creationix/nvm.git $OPT_DIR/nvm
-source $OPT_DIR/nvm/nvm.sh
-nvm install 0.10
-nvm use 0.10
-nvm alias default 0.10
-npm config set registry http://registry.npmjs.org/
+echo "Install newest node"
+if [[ ${VERSION%%.*} -ge 14 ]]; then
+	# Ubuntu 14.04
+	sudo add-apt-repository -y ppa:chris-lea/node.js
+	sudo apt-get update -y
+	sudo apt-get install -y nodejs
+	sudo npm install -g npm
+else
+	# Ubuntu 12.04
+	sudo add-apt-repository -y ppa:richarvey/nodejs
+	sudo apt-get update -y
+	sudo apt-get install -y nodejs npm
+	npm config set registry http://registry.npmjs.org/
+fi
+
+echo "Node version:"
+node -v
 
 echo "Install coffeescript"
 sudo npm install -g coffee-script
-sudo npm link coffee-script
-
 echo "Install less"
 sudo npm install -g less
-sudo npm link less
-
-#########################
-
-echo "$0: done"
