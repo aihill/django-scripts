@@ -38,7 +38,7 @@ echo "Installing newest pip (>= 1.5) locally..."
 mkdir -p opt/pip
 cd opt/pip
 wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py -O get-pip.py
-python get-pip.py
+$VENV_DIR/bin/python get-pip.py
 cd "$REPO_DIR"
 
 LOCAL_PIP="$VENV_DIR/bin/pip"
