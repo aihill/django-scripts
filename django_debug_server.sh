@@ -25,4 +25,4 @@ echo "setting DEBUG=True in $SRC_SETTINGS_DIR/settings_local.py"
 # start the private webserver
 bash "$DIR/django_collect_static.sh"
 builtin cd "$SRC_DIR"
-sudo -u $SERVER_USER ./manage.py runserver localhost:$port
+sudo -u $SERVER_USER ./manage.py runserver 0.0.0.0:$port

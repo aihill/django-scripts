@@ -43,9 +43,6 @@ SITE_URL = ('https://' if ENABLE_SSL else 'http://') + SERVER_NAME
 # can serve.
 ALLOWED_HOSTS = [SERVER_NAME, 'www.%s' % SERVER_NAME]
 
-# Celery broker
-BROKER_URL = 'amqp://guest:guest@localhost:5672/'
-
 # Set to True if you are testing and don't want to use a worker node,
 # and want to run all tasks synchronously
 CELERY_ALWAYS_EAGER = False
