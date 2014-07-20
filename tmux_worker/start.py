@@ -43,7 +43,7 @@ def start_tmux_worker(hostname, utilization, ram, config, queue, worker_dir, ven
 
     # kill existing worker (if any)
     session_name = "celery-%s" % queue
-    from .kill import kill_tmux_worker
+    from tmux_worker.kill import kill_tmux_worker
     kill_tmux_worker(hostname, session_name)
 
     # start new worker
