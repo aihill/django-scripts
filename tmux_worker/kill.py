@@ -5,7 +5,7 @@ import subprocess
 import argparse
 
 
-def tmux_celery_worker_kill(hostname, session_name):
+def kill_tmux_worker(hostname, session_name):
     try:
         output = subprocess.check_output(["tmux", "ls"])
     except:
@@ -35,6 +35,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     session_name = "celery-%s" % args.queue
-    killed = tmux_celery_worker_kill(hostname, session_name)
+    killed = kill_tmux_worker(hostname, session_name)
     if not killed:
         print "%s: No worker killed." % hostname

@@ -8,7 +8,7 @@ import socket
 import psutil
 
 
-def tmux_celery_worker_start(hostname, utilization, ram, config, queue, worker_dir, venv_dir):
+def start_tmux_worker(hostname, utilization, ram, config, queue, worker_dir, venv_dir):
 
     # ensure each worker has enough RAM
     concurrency = int(np.clip(args.utilization, 0.0, 1.0) * multiprocessing.cpu_count())
@@ -43,8 +43,8 @@ def tmux_celery_worker_start(hostname, utilization, ram, config, queue, worker_d
 
     # kill existing worker (if any)
     session_name = "celery-%s" % queue
-    from .tmux_celery_worker_kill import tmux_celery_worker_kill
-    tmux_celery_worker_kill(hostname, session_name)
+    from .kill import kill_tmux_worker
+    kill_tmux_worker(hostname, session_name)
 
     # start new worker
     print "%s: %s" % (hostname, worker_cmd)
@@ -88,4 +88,4 @@ if __name__ == "__main__":
         help='virtualenv directory')
 
     args = parser.parse_args()
-    tmux_celery_worker_start(hostname, **vars(args))
+    start_tmux_worker(hostname, **vars(args))
