@@ -72,6 +72,9 @@ if __name__ == "__main__":
         '-u', '--utilization', type=float, metavar='<float>', default=1.0,
         help='percent of the machine\'s CPUs that are used (0.0 to 1.0)')
     parser.add_argument(
+        '-q', '--queue', metavar='<name>', default='celery',
+        help='Celery queue name')
+    parser.add_argument(
         '-r', '--ram', type=float, metavar='<MB>', default=1024.0,
         help='percent of the machine\'s CPUs that are used (0.0 to 1.0)')
     parser.add_argument(

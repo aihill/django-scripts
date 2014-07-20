@@ -31,8 +31,7 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         '-q', '--queue', metavar='<name>', default='celery',
-        help='Celery queue name'
-    )
+        help='Celery queue name')
     args = parser.parse_args()
 
     session_name = "celery-%s" % args.queue
