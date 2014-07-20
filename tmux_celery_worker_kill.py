@@ -33,7 +33,7 @@ if __name__ == "__main__":
         '-q', '--queue', metavar='<name>', default='celery',
         help='Celery queue name'
     )
-    args = parser.parser_args()
+    args = parser.parse_args()
 
     session_name = "celery-%s" % args.queue
     killed = tmux_celery_worker_kill(hostname, session_name)
