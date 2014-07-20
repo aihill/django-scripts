@@ -4,6 +4,7 @@ cython
 gfortran
 git-core
 goaccess
+htop
 inotify-tools
 ipython
 ipython-notebook
