@@ -21,17 +21,16 @@ def start_tmux_worker(hostname, utilization, ram, config, queue, worker_dir, ven
     if concurrency < 1:
         print("%s: concurrency=%s --> exiting" % hostname, concurrency)
 
+    # celery binary
     if venv_dir:
-        venv_cmd = "source '%s/bin/activate';" % venv_dir
-        celery_worker = "%s/bin/celery worker" % venv_dir
+        celery_bin = "%s/bin/celery" % venv_dir
     else:
-        venv_cmd = "echo 'no venv';"
-        celery_worker = "celery worker"
+        celery_bin = "celery"
 
-    worker_cmd = ' '.join([
-        "builtin cd '%s';" % worker_dir,
-        venv_cmd,
-        celery_worker,
+    # celery worker command
+    celery_worker = ' '.join([
+        celery_bin,
+        "worker",
         "--loglevel=info",
         "--concurrency=%s" % concurrency,
         '--maxtasksperchild=1',
@@ -41,14 +40,20 @@ def start_tmux_worker(hostname, utilization, ram, config, queue, worker_dir, ven
         "-Ofair"
     ])
 
+    # full tmux command
+    session_cmd = '; '.join([
+        "builtin cd '%s'" % worker_dir,
+        celery_worker,
+    ])
+
     # kill existing worker (if any)
     session_name = "celery-%s" % queue
     from tmux_worker.kill import kill_tmux_worker
     kill_tmux_worker(hostname, session_name)
 
     # start new worker
-    print "%s: %s" % (hostname, worker_cmd)
-    subprocess.check_call(["tmux", "new", "-s", session_name, '-d', worker_cmd])
+    print "%s: %s" % (hostname, session_cmd)
+    subprocess.check_call(["tmux", "new", "-s", session_name, '-d', session_cmd])
 
     # show result
     output = subprocess.check_output(["tmux", "ls"])
