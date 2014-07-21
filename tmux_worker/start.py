@@ -22,9 +22,9 @@ def start_tmux_worker(hostname, utilization, ram, config, queue, worker_dir, ven
         print("%s: concurrency=%s --> exiting" % hostname, concurrency)
 
     if venv_dir:
-        venv_cmd = "source '%s/bin/activate'" % venv_dir
+        venv_cmd = "source '%s/bin/activate';" % venv_dir
     else:
-        venv_cmd = "echo 'no venv'"
+        venv_cmd = "echo 'no venv';"
 
     worker_cmd = ' '.join([
         "builtin cd '%s';" % worker_dir,
