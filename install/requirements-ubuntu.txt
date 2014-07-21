@@ -23,6 +23,7 @@ libjpeg-dev
 libmemcached-dev
 libmpfr-dev
 libpng-dev
+libpq-dev
 libssl-dev
 libxml2-dev
 libxslt-dev
@@ -39,3 +40,4 @@ python-setuptools
 python-virtualenv
 rabbitmq-server
 supervisor
+swig
