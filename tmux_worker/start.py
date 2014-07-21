@@ -23,14 +23,15 @@ def start_tmux_worker(hostname, utilization, ram, config, queue, worker_dir, ven
 
     if venv_dir:
         venv_cmd = "source '%s/bin/activate';" % venv_dir
+        celery_worker = "%s/bin/celery worker" % venv_dir
     else:
         venv_cmd = "echo 'no venv';"
+        celery_worker = "celery worker"
 
     worker_cmd = ' '.join([
         "builtin cd '%s';" % worker_dir,
         venv_cmd,
-        "celery",
-        "worker",
+        celery_worker,
         "--loglevel=info",
         "--concurrency=%s" % concurrency,
         '--maxtasksperchild=1',
