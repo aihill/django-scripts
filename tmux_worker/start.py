@@ -26,8 +26,9 @@ def start_tmux_worker(hostname, utilization, ram, config, queue, worker_dir, ven
     else:
         venv_cmd = "echo 'no venv'"
 
-    celery_cmd = ' '.join([
+    worker_cmd = ' '.join([
         "builtin cd '%s';" % worker_dir,
+        venv_cmd,
         "celery",
         "worker",
         "--loglevel=info",
@@ -38,8 +39,6 @@ def start_tmux_worker(hostname, utilization, ram, config, queue, worker_dir, ven
         "-n", "%s-%s" % (hostname, queue),
         "-Ofair"
     ])
-
-    worker_cmd = '; '.join([venv_cmd, celery_cmd])
 
     # kill existing worker (if any)
     session_name = "celery-%s" % queue
