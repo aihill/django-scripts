@@ -13,6 +13,7 @@ libatlas-dev
 libblas-dev
 libboost-dev
 libboost-filesystem-dev
+libboost-python-dev
 libboost-system-dev
 libboost-thread-dev
 libeigen3-dev
