@@ -27,6 +27,6 @@ echo "pg_dump... done."
 # update dumpfile
 echo "updating dumpfile ($PSQL_DUMP_FILE)..."
 mkdir -p $(dirname $PSQL_DUMP_FILE)
-cp -f $PSQL_OUT $PSQL_DUMP_FILE
+ln -s -f $PSQL_OUT $PSQL_DUMP_FILE
 
 echo "updating dumpfile... done."
