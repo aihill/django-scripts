@@ -62,8 +62,13 @@ REPO_DIR="$(readlink -f "$( builtin cd "$SCRIPTS_DIR/.." && pwd )")"
 # Django source files.
 SRC_DIR=$REPO_DIR/server
 
+# Django project module, settings, WSGI script
+DJANGO_PROJECT_MODULE=$PROJECT_NAME
+DJANGO_SETTINGS_MODULE=${DJANGO_PROJECT_MODULE}.settings
+DJANGO_WSGI=${DJANGO_PROJECT_MODULE}.wsgi
+
 # Django directory containing settings.py
-SRC_SETTINGS_DIR=$REPO_DIR/server/$PROJECT_NAME
+SRC_SETTINGS_DIR=$SRC_DIR/$DJANGO_PROJECT_MODULE
 
 # Virtualenv directory.
 VENV_DIR=$REPO_DIR/venv
