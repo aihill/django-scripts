@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-u This starts gunicorn (the worker framework that runs django code).
+# This starts gunicorn (the worker framework that runs django code).
 # Incoming web requests go to nginx, which are then fowarded to gunicorn.
 #
 # NOTE: while you can start this script, by default it is set up to be called
