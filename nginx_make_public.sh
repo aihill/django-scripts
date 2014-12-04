@@ -34,6 +34,7 @@ if [[ ! -f /etc/supervisor/conf.d/$PROJECT_NAME.conf ]]; then
 	sed -e "s|REPO_DIR|$REPO_DIR|g" \
 		-e "s|SRC_DIR|$SRC_DIR|g" \
 		-e "s|RUN_DIR|$RUN_DIR|g" \
+		-e "s|SCRIPTS_DIR|$DIR|g" \
 		-e "s|SERVER_USER|$SERVER_USER|g" \
 		-e "s|SERVER_GROUP|$SERVER_GROUP|g" \
 		-e "s|PROJECT_NAME|$PROJECT_NAME|g" \
