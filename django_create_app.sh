@@ -19,6 +19,10 @@ else
 	echo "App $1 already exists"
 fi
 
+# set up migrations
+mkdir -p $1/migrations
+touch $1/migrations/__init__.py
+
 # set up the directory for management commands
 mkdir -p $1/management/commands
 touch $1/management/__init__.py
