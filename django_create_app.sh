@@ -12,6 +12,11 @@ if [ $# -lt 1 ]; then
 	exit 1
 fi
 
+# make sure everything is okay first
+set -e
+$VENV_DIR/bin/python manage.py validate
+
+# create app dir
 builtin cd $SRC_DIR
 if [ ! -d $1 ]; then
 	$VENV_DIR/bin/python manage.py startapp $1
