@@ -6,4 +6,4 @@
 DIR="$( builtin cd "$( dirname "$( readlink -f "${BASH_SOURCE[0]}" )" )" && pwd )"
 source $DIR/load_config.sh
 
-$VENV/bin/python $SRC_DIR/manage.py clear_cache
+$VENV_DIR/bin/python $SRC_DIR/manage.py clear_cache
