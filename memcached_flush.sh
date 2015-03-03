@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# This flushes the memcached cache
+# Flush the memcached cache for the entire system
 #
 
 DIR="$( builtin cd "$( dirname "$( readlink -f "${BASH_SOURCE[0]}" )" )" && pwd )"

@@ -52,8 +52,8 @@ else
 fi
 
 echo ""
-echo "$0: flush cache"
-bash "$DIR/memcached_flush.sh"
+echo "$0: clear cache"
+bash "$DIR/clear_cache.sh"
 
 echo "$0: rebuild docs"
 bash "$DIR/docs_build.sh"
