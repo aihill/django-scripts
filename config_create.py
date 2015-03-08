@@ -67,6 +67,11 @@ def prompt_var(var_name, default, choices=[], regex=None, no_whitespace=True, me
     print '  %s="%s"' % (var_name, variables[var_name])
 
 
+def are_you_sure(prompt="Are you sure?"):
+    ans = raw_input("\n%s [y/N] " % prompt)
+    return (ans and ans.strip().lower() in ["y", "yes"])
+
+
 print """
 This script sets up some variables and saves your responses in
 'scripts/config.sh'.
@@ -82,8 +87,7 @@ The configuration (config.sh) already exists; are you sure that you want to
 overwrite it?  Note that you can simply edit the file (%s)
 instead of use this script.
 """.strip() % CONFIG
-    ans = raw_input("\nAre you sure? [y/N] ")
-    if not ans or ans.lower() != "y":
+    if not are_you_sure():
         sys.exit(1)
 
 
@@ -143,6 +147,9 @@ Public IP address for the webserver, or 127.0.0.1 if you are going to run locall
                        "make sure that your hostname is correctly set up.  You should be able to ping the "
                        "hostname and get a response.")
                 print "You can always use 'localhost' until you fix your hostname"
+
+    if are_you_sure("Do you want to continue anyway?"):
+        break
 
 prompt_var(
     'SRC_DIR',
