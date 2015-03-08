@@ -191,7 +191,7 @@ for f in 'SRC_DIR', 'DATA_DIR', 'BACKUP_DIR', 'DB_DIR':
             not variables[f].startswith('/') and
             not variables[f].startswith('$REPO_DIR/')):
         new_dir = '$REPO_DIR/' + variables[f]
-        print "%s: %s --> %s" % (f, variables[f], new_dir)
+        print "Changing %s: %s --> %s" % (f, variables[f], new_dir)
         variables[f] = new_dir
 
 prompt_var(
