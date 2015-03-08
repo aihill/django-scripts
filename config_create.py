@@ -145,6 +145,14 @@ Public IP address for the webserver, or 127.0.0.1 if you are going to run locall
                 print "You can always use 'localhost' until you fix your hostname"
 
 prompt_var(
+    'SRC_DIR',
+    default='$REPO_DIR/server',
+    message='''
+Location of the root django source code for your site, so manage.py should be in this directory.
+Note: $REPO_DIR refers to the repository directory (you can use this as a variable).
+''')
+
+prompt_var(
     'DATA_DIR',
     default='$REPO_DIR/data',
     message='''
@@ -171,7 +179,7 @@ EBS disk.  In that case, set this to a directory on the mounted EBS disk.
 ''')
 
 # make sure paths are not local
-for f in 'BACKUP_DIR', 'DATA_DIR', 'DB_DIR':
+for f in 'SRC_DIR', 'DATA_DIR', 'BACKUP_DIR', 'DB_DIR':
     if (variables[f] and
             not variables[f].startswith('/') and
             not variables[f].startswith('$REPO_DIR/')):
