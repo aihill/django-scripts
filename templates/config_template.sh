@@ -6,8 +6,8 @@
 ##
 
 if [[ -z "$BASH" ]]; then
-	print "Error: this script expects to be sourced from the BASH shell"
-	return
+	echo "Error: this script expects to be sourced from the BASH shell"
+	exit 1
 fi
 
 # Name of project (used by nginx, gunicorn, ...)
