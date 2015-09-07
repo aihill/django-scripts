@@ -21,10 +21,4 @@ cat $F | grep "^ENABLE_CACHING ="
 cat $F | grep "^DEBUG_TOOLBAR ="
 cat $F | grep "^MTURK_SANDBOX ="
 
-echo ""
-echo "$0: mark site as changed"
-sudo touch "$SRC_SETTINGS_DIR/wsgi.py"
-
-bash "$DIR/nginx_make_public.sh"
-bash "$DIR/clear_cache.sh"
-sudo supervisorctl restart $PROJECT_NAME
+bash "$DIR/files_changed.sh"
