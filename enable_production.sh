@@ -27,5 +27,5 @@ echo "$0: mark site as changed"
 sudo touch "$SRC_SETTINGS_DIR/wsgi.py"
 
 bash "$DIR/nginx_make_public.sh"
-bash "$DIR/memcached_flush.sh"
+bash "$DIR/clear_cache.sh"
 sudo supervisorctl restart $PROJECT_NAME
