@@ -27,6 +27,8 @@ source $DIR/load_config.sh
 # Update repo and force an update
 function update() {
 	sudo -u $LOCAL_USER git pull
+	sudo -u $LOCAL_USER git submodule init
+	sudo -u $LOCAL_USER git submodule update
 
 	# mark site as changed
 	$DIR/files_changed.sh $LOCAL_USER
