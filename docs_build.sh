@@ -20,4 +20,4 @@ if [[ ! -d $VENV_DIR ]]; then
 fi
 
 builtin cd "$DOCS_DIR"
-make clean html
+make html
