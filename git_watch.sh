@@ -28,14 +28,6 @@ source $DIR/load_config.sh
 function update() {
 	sudo -u $LOCAL_USER git pull
 
-	# clean docs
-	if [[ -n "$DOCS_DIR" ]] && [[ -d "$DOCS_DIR" ]]; then
-		p="$(pwd)"
-		builtin cd "$DOCS_DIR"
-		sudo make clean
-		cd "$p"
-	fi
-
 	# mark site as changed
 	$DIR/files_changed.sh $LOCAL_USER
 }
