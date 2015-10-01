@@ -14,7 +14,7 @@ source $DIR/load_config.sh
 
 NAME="$PROJECT_NAME"                              # Name of the application
 SOCKFILE=$RUN_DIR/gunicorn.sock                   # we will communicte using this unix socket
-NUM_WORKERS=4                                     # how many worker processes should Gunicorn spawn
+NUM_WORKERS=$(grep -c ^processor /proc/cpuinfo)   # how many worker processes should Gunicorn spawn
 
 # Set up environment
 builtin cd $SRC_DIR
