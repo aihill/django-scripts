@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Start the celery flower monitoring tool
+# Start the celery flower monitoring tool on localhost:5555
 #
 
 DIR="$( builtin cd "$( dirname "$( readlink -f "${BASH_SOURCE[0]}" )" )" && pwd )"
