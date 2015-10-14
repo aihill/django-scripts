@@ -14,6 +14,7 @@ F="$SRC_SETTINGS_DIR/settings_local.py"
 sed -r -i \
 	-e 's/^\s*DEBUG\s*=.*$/DEBUG = False/' \
 	-e 's/^\s*ENABLE_CACHING\s*=.*$/ENABLE_CACHING = True/' \
+	-e 's/^\s*PRODUCTION_SERVER\s*=.*$/PRODUCTION_SERVER = True/' \
 	"$F"
 
 echo "Relevant variables in $F:"
@@ -21,5 +22,6 @@ cat $F | grep "^DEBUG ="
 cat $F | grep "^ENABLE_CACHING ="
 cat $F | grep "^DEBUG_TOOLBAR ="
 cat $F | grep "^MTURK_SANDBOX ="
+cat $F | grep "^PRODUCTION_SERVER ="
 
 bash "$DIR/files_changed.sh"
