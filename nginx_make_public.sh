@@ -61,11 +61,15 @@ if [[ ! -f /etc/logrotate.d/nginx-$PROJECT_NAME ]]; then
 		-e "s|RUN_DIR|$RUN_DIR|g" \
 		-e "s|SERVER_USER|$SERVER_USER|g" \
 		-e "s|SERVER_GROUP|$SERVER_GROUP|g" \
-		$LOGROTATE_TEMPLATE \
-		> $REPO_DIR/_tmp.conf
+		"$LOGROTATE_TEMPLATE" \
+		> "$REPO_DIR/_tmp.conf"
 
-	sudo mv $REPO_DIR/_tmp.conf \
-		/etc/logrotate.d/nginx-$PROJECT_NAME
+	logrotate_file="/etc/logrotate.d/nginx-$PROJECT_NAME"
+	sudo mv "$REPO_DIR/_tmp.conf" "$logrotate_file"
+
+	# fix permissions: has to be 0644 root:root
+	sudo chown root:root "$logrotate_file"
+	sudo chmod 0644 "$logrotate_file"
 fi
 
 ##
