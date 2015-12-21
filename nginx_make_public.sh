@@ -21,7 +21,7 @@ echo "Preparing $RUN_DIR directory..."
 sudo mkdir -p $RUN_DIR
 sudo chown -R $SERVER_USER:$SERVER_GROUP $RUN_DIR
 for f in gunicorn nginx-access nginx-error; do
-	sudo -u $SERVER_USER touch $RUN_DIR/$f.log
+	sudo -u $SERVER_USER touch "$RUN_DIR/$f.log"
 done
 
 ##
@@ -38,11 +38,11 @@ if [[ ! -f /etc/supervisor/conf.d/$PROJECT_NAME.conf ]]; then
 		-e "s|SERVER_USER|$SERVER_USER|g" \
 		-e "s|SERVER_GROUP|$SERVER_GROUP|g" \
 		-e "s|PROJECT_NAME|$PROJECT_NAME|g" \
-		$SUPERVISOR_TEMPLATE \
-		> $REPO_DIR/_tmp.conf
+		"$SUPERVISOR_GUNICORN_TEMPLATE" \
+		> "$REPO_DIR/_tmp.conf"
 
-	sudo mv $REPO_DIR/_tmp.conf \
-		/etc/supervisor/conf.d/$PROJECT_NAME.conf
+	sudo mv "$REPO_DIR/_tmp.conf" \
+		"/etc/supervisor/conf.d/$PROJECT_NAME.conf"
 
 	sudo supervisorctl reread
 	sudo supervisorctl update
@@ -89,14 +89,14 @@ if [[ ! -f /etc/nginx/sites-available/$PROJECT_NAME ]]; then
 		-e "s|SERVER_NAME|$SERVER_NAME|g" \
 		-e "s|SERVER_USER|$SERVER_USER|g" \
 		-e "s|SERVER_GROUP|$SERVER_GROUP|g" \
-		$NGINX_TEMPLATE \
-		> $REPO_DIR/_tmp.conf
+		"$NGINX_TEMPLATE" \
+		> "$REPO_DIR/_tmp.conf"
 
-	sudo mv $REPO_DIR/_tmp.conf \
-		/etc/nginx/sites-available/$PROJECT_NAME
+	sudo mv "$REPO_DIR/_tmp.conf" \
+		"/etc/nginx/sites-available/$PROJECT_NAME"
 
 	# disable the default nginx site
-	sudo rm -f /etc/nginx/sites-enabled/default
+	sudo rm -f "/etc/nginx/sites-enabled/default"
 fi
 
 if [[ ! -f /etc/nginx/sites-enabled/$PROJECT_NAME ]]; then
@@ -104,8 +104,8 @@ if [[ ! -f /etc/nginx/sites-enabled/$PROJECT_NAME ]]; then
 
 	# activate our site
 	sudo ln -f -s \
-		/etc/nginx/sites-available/$PROJECT_NAME \
-		/etc/nginx/sites-enabled/$PROJECT_NAME
+		"/etc/nginx/sites-available/$PROJECT_NAME" \
+		"/etc/nginx/sites-enabled/$PROJECT_NAME"
 else
 	echo "nginx already set up"
 fi
