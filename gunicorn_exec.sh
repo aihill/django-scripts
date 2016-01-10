@@ -32,7 +32,7 @@ rm -f $SOCKFILE
 # - exec is necessary to properly kill gunicorn instances
 # - programs meant to be run under supervisor should not daemonize
 #   themselves (do not use --daemon)
-exec gunicorn ${DJANGO_WSGI}:application \
+exec "$VENV_DIR/gunicorn" ${DJANGO_WSGI}:application \
   --name $NAME \
   --workers $NUM_WORKERS \
   --user=$SERVER_USER \
