@@ -10,7 +10,7 @@ if [[ $# -ge 1 ]]; then
 	PSQL_DUMP_FILE=$1
 fi
 
-if [[ ! -s $PSQL_DUMP_FILE ]]; then
+if [[ ! -s "$PSQL_DUMP_FILE" ]]; then
 	echo "Error: dumpfile '$PSQL_DUMP_FILE' does not exist"
 	exit 1
 fi
@@ -39,10 +39,10 @@ if [[ $response =~ ^(y)$ ]]; then
 	# kill database and create it from scratch again
 	dropdb -p $DB_PORT $DB_NAME
 	createdb -p $DB_PORT --owner=$DB_USER --encoding=UTF8 $DB_NAME
-	gunzip -c $PSQL_DUMP_FILE | psql -p $DB_PORT $DB_NAME $DB_USER
+	gunzip -c "$PSQL_DUMP_FILE" | psql -p $DB_PORT $DB_NAME $DB_USER
 
-	$DIR/database_migrate.sh
-	$DIR/memcached_flush.sh
+	"$DIR/database_migrate.sh"
+	"$DIR/memcached_flush.sh"
 else
 	echo "Exiting (nothing was changed)"
 	exit 1
