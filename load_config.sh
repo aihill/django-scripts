@@ -57,7 +57,7 @@ if \
 	[[ -z "$BACKUP_DIR" ]] || \
 	[[ -z "$DATA_DIR" ]] || \
 	[[ -z "$RUN_DIR" ]] || \
-	[[ -z "$SRC_SETTINGS_DIR" ]] || [[ ! -s "$SRC_SETTINGS_DIR/settings.py" ]] || \
+	[[ -z "$SRC_SETTINGS_DIR" ]] || \
 	[[ -z "$SRC_DIR" ]] || [[ ! -d "$SRC_DIR" ]] || \
 	[[ -z "$VENV_DIR" ]] || \
 	[[ -z "$OPT_DIR" ]] || \
